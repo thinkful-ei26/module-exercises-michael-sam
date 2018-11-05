@@ -1,5 +1,5 @@
 'use strict';
-/* global cuid, Item */
+/* global store, Item, cuid */
 const store = (function() {
   
   const items = [];
@@ -35,7 +35,7 @@ const store = (function() {
 //   };
 
   const findById = function(id){
-    return store.items.find(element => element[id] === id);
+    return store.items.find(element => element.id === id);
   };
 
   const findAndDelete = function (id) {
