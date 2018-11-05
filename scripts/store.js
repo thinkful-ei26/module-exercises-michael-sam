@@ -1,5 +1,5 @@
 'use strict';
-
+/* global store, cuid, Item */
 const store = (function() {
   
   const items = [];
@@ -13,11 +13,11 @@ const store = (function() {
     } catch (error) {
       throw new Error(error);
     }
-  }
+  };
   
   const findAndToggleChecked = function (id) {
     this.findById(id).checked = !this.findById(id).checked;
-  }
+  };
 
   const findAndUpdateName = function (id, newName) {
     try {
@@ -26,13 +26,13 @@ const store = (function() {
     } catch (error) {
       throw new Error(error); 
     }
-  }
+  };
 
-  const findId = function (item) {
-    return $(item)
-      .closest('.js-item-element')
-      .data('item-id');
-  }
+//   const findId = function (item) {
+//     return $(item)
+//       .closest('.js-item-element')
+//       .data('item-id');
+//   };
 
   const findById = function(id){
     return store.items.find(id);
@@ -40,7 +40,7 @@ const store = (function() {
 
   const findAndDelete = function (id) {
     this.items.splice(this.items.findIndex(ids => ids === id),1); 
-   }
+  };
 
   
   return { 
@@ -52,7 +52,7 @@ const store = (function() {
     findAndToggleChecked,
     findAndUpdateName,
     findById,
-    findId
+    //findId
   };
   
 }());
