@@ -11,9 +11,13 @@ const store = (function() {
       Item.validateName(name);
       this.items.push(Item.create(name));
     } catch (error) {
-      throw new Error(error);
+      throw new Error('Error during the validation of the name');
     }
   };
+
+  const toggleCheckFilter = function () {
+    store.hideCheckedItems = !store.hideCheckedItems;
+  }
   
   const findAndToggleChecked = function (id) {
     this.findById(id).checked = !this.findById(id).checked;
@@ -35,8 +39,12 @@ const store = (function() {
 //   };
 
   const findById = function(id){
-    return store.items.find(element => element.id === id);
+    return this.items.find(element => element.id === id);
   };
+
+  function setSearchTerm(val) {
+    this.searchTerm = val;
+  }
 
   const findAndDelete = function (id) {
     this.items.splice(this.items.findIndex(ids => ids === id),1); 
@@ -52,6 +60,8 @@ const store = (function() {
     findAndToggleChecked,
     findAndUpdateName,
     findById,
+    toggleCheckFilter,
+    setSearchTerm,
     //findId
   };
   
