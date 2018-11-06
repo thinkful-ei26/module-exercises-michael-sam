@@ -8,7 +8,7 @@ const shoppingList = (function(){
     if (!item.checked) {
       itemTitle = `
         <form class="js-edit-item">
-          <input class="shopping-item type="text" value="${item.name}" />
+          <input aria-label="Edit item ${item.name}" class="shopping-item type="text" value="${item.name}" />
         </form>
       `;
     }
@@ -17,10 +17,10 @@ const shoppingList = (function(){
       <li class="js-item-element" data-item-id="${item.id}">
         ${itemTitle}
         <div class="shopping-item-controls">
-          <button class="shopping-item-toggle js-item-toggle">
+          <button aria-label="Mark ${item.name} complete" class="shopping-item-toggle js-item-toggle">
             <span class="button-label">check</span>
           </button>
-          <button class="shopping-item-delete js-item-delete">
+          <button aria-label="delete ${item.name}" class="shopping-item-delete js-item-delete">
             <span class="button-label">delete</span>
           </button>
         </div>
